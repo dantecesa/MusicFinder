@@ -32,7 +32,7 @@ struct ResultsView: View {
         let santizedSearchQuery = withSearchQuery.replacingOccurrences(of: " ", with: "+").lowercased()
         print(santizedSearchQuery)
         
-        guard let url = URL(string: "https://itunes.apple.com/search?term=\(santizedSearchQuery)&entity=\(withSearchType)&attribute=allArtistTerm") else {
+        guard let url = URL(string: "https://itunes.apple.com/search?term=\(santizedSearchQuery)&entity=\(withSearchType.lowercased().dropLast())&attribute=allArtistTerm") else {
             fatalError("Invalid URL")
         }
         print(url)
@@ -54,6 +54,6 @@ struct ResultsView: View {
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsView(results: [apiItem(trackName: "Test Song", collectionName: "Test Collection", artworkUrl60: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/72/da/6b/72da6b25-b70c-059c-6a93-c6278f83e6bb/source/60x60bb.jpg", trackViewUrl: "https://music.apple.com/us/album/gorgeous/1440933849?i=1440934258&uo=4")], searchQuery: "Taylor Swift", searchType: "song")
+        ResultsView(results: [], searchQuery: "Taylor Swift", searchType: "song")
     }
 }

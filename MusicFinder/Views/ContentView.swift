@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var artistName: String = ""
     @State private var searchSelection: Int = 0
-    let searchType: [(String, String)] = [("Albums", "album"), ("Songs", "song")]
+    let searchType: [String] = ["Albums", "Songs"]
     
     var body: some View {
         NavigationView {
@@ -20,7 +20,7 @@ struct ContentView: View {
                         Form {
                             Picker("Search Type", selection: $searchSelection) {
                                 ForEach(0..<searchType.count) { index in
-                                    Text(searchType[index].0)
+                                    Text(searchType[index])
                                 }
                             }
                             .labelsHidden()
@@ -35,11 +35,12 @@ struct ContentView: View {
                     TextField("Search query", text: $artistName)
                     }
                     
-                NavigationLink("Run Search", destination: ResultsView(searchQuery: artistName, searchType: searchType[searchSelection].1))
+                NavigationLink("Run Search", destination: ResultsView(searchQuery: artistName, searchType: searchType[searchSelection]))
                     .disabled(artistName.isEmpty)
             }
             .navigationTitle("Music Finder")
         }
+        .navigationViewStyle(.stack)
     }
 }
 

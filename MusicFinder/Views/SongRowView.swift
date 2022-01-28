@@ -26,9 +26,9 @@ struct SongRowView: View {
             .frame(width: 60, height: 60)
             
             VStack(alignment: .leading) {
-                Text(item.trackName ?? "hi")
+                Text(item.trackName ?? "Missing Track Name")
                     .font(.headline)
-                Text(item.collectionName ?? "hi")
+                Text(item.collectionName ?? "Missing Album Name")
             }
             Spacer()
             Link(destination: URL(string: item.trackViewUrl ?? "")!, label: {
@@ -40,6 +40,6 @@ struct SongRowView: View {
 
 struct SongRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SongRowView(item: apiItem(artistName: "Taylor Swift", trackName: "Sample Track", collectionName: "Sample Album", artworkUrl60: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/72/da/6b/72da6b25-b70c-059c-6a93-c6278f83e6bb/source/60x60bb.jpg", trackViewUrl: "https://music.apple.com/us/album/gorgeous/1440933849?i=1440934258&uo=4"))
+        SongRowView(item: apiItem(artistName: "Taylor Swift", collectionName: "1989", artworkUrl60: "", collectionViewUrl: "http://www.google.com", trackCount: 12, trackName: "A track", trackViewUrl: "http://www.google.com"))
     }
 }
